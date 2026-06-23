@@ -1,5 +1,8 @@
 # GeoExtractor.jl
 
+[![CI](https://github.com/akwiatkowski/geo-extractor.jl/actions/workflows/CI.yml/badge.svg)](https://github.com/akwiatkowski/geo-extractor.jl/actions/workflows/CI.yml)
+[![License: LGPL v3](https://img.shields.io/badge/License-LGPL_v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
+
 Standalone geo-data extraction package, carved out of
 [`Miasteczko.jl`](../urban/miasteczko-jl) so several tools can share one
 extraction pipeline: the transit microsim, a 3D OSM viewer, and the cycling
@@ -44,3 +47,10 @@ mise exec -- julia --project=. -e 'using Pkg; Pkg.test()'
 Carved out 2026-06-23. Consumers (`Miasteczko.jl`, cycling route generator) still
 need to be rewired to depend on this package — see
 `~/projects/claude/plans/cycle-router.md`.
+
+## License
+
+[LGPL-3.0-or-later](LICENSE). The GNU Lesser General Public License v3 incorporates
+the terms of the [GNU General Public License v3](COPYING.GPL) by reference, so both
+texts are included. In short: you may use this library in projects under any license,
+but modifications to the library itself must remain under the (L)GPL.
