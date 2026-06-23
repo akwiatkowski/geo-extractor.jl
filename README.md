@@ -33,7 +33,7 @@ using GeoExtractor.Extractor          # Extractor.extract(Coord; extent_m, engin
 - Julia ≥ 1.10 (managed via `mise`; run commands as `mise exec -- julia …`).
 - [`osmium-tool`](https://osmcode.org/osmium-tool/) on `PATH` for PBF clipping.
 - `LLM_OSM` env var pointing at the dir holding `poland-latest.osm.pbf`.
-- SRTM1 HGT tiles under `~/projects/llm/input/srtm/` for the elevation engine.
+- `LLM_SRTM` env var pointing at the dir holding SRTM1 HGT tiles (`*.hgt.gz`).
 
 ## Develop / test
 

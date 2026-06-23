@@ -33,8 +33,8 @@ const EXTRACTOR_VERSION = 1
 const SRTM_VERSION = "SRTM1-30m"
 # All region bundles live here. Generated-from-input data → belongs under output/.
 const OUTPUT_ROOT = joinpath(homedir(), "projects", "llm", "output", "geo-extracts")
-# SRTM1 (30 m) HGT tiles, gzipped, named N{lat}E{lon}.hgt.gz (shared with cycling).
-const SRTM_DIR = joinpath(homedir(), "projects", "llm", "input", "srtm")
+"""Path to the SRTM1 HGT tiles directory (from the `LLM_SRTM` env var)."""
+srtm_dir()::String = get(ENV, "LLM_SRTM", joinpath(homedir(), "projects", "llm", "input", "srtm"))
 
 """Quantized cell key for a center coordinate, e.g. (52.999,17.07) → "53.0_17.07" at precision 3."""
 cell_key(c::Coord, precision::Int) = string(round(c.lat; digits=precision), "_", round(c.lon; digits=precision))
@@ -275,7 +275,7 @@ function tiles_for_bbox(bb::BBox)::Vector{String}
     for lat in floor(Int, bb.min_lat):floor(Int, bb.max_lat),
         lon in floor(Int, bb.min_lon):floor(Int, bb.max_lon)
         name = string("N", lpad(lat, 2, '0'), "E", lpad(lon, 3, '0'))
-        p = joinpath(SRTM_DIR, "$name.hgt.gz")
+        p = joinpath(srtm_dir(), "$name.hgt.gz")
         isfile(p) && push!(paths, "/vsigzip/" * p)
     end
     return paths
