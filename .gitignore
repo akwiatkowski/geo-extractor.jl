@@ -1,0 +1,6 @@
+# Julia
+Manifest.toml
+/docs/build/
+*.cov
+*.jl.*.cov
+.DS_Store
